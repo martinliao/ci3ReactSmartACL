@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+/** Module_Permission(Access) */
 class Access extends AdminController
 {
 
@@ -19,37 +20,38 @@ class Access extends AdminController
         $admin_role_id = $_admins[0]['role_id'];
 		if ($admin_role_id != 1) {
 			$roles = $this->db->query('SELECT id as id_role, name as role FROM acl_roles WHERE id != 1')->result();
-			$menus = $this->db->query('SELECT * FROM user_menu WHERE id_menu != 1 ORDER BY no_order ASC')->result();
+
+			$modules = $this->db->query('SELECT * FROM acl_modules WHERE id != 1 ORDER BY no_order ASC')->result();
 		} else {
-			//$roles = $this->db->get('acl_roles')->result();
-			$roles = $this->db->query('SELECT id as id_role, name as role FROM acl_roles')->result();
-			$menus = $this->db->get('user_menu')->result();
+			$roles = $this->db->query('SELECT id as id_role, name as role_name FROM acl_roles')->result();
+			$modules = $this->db->get('acl_modules')->result();
 		}
 
 		foreach($roles as $role) {
 			$tmp[$role->id_role] = [];
-			foreach($menus as $menu) {
+			foreach($modules as $module) {
 				$_check_val= '';
-				if ( $role->id_role == 1 && $menu->id_menu == 1) {
+				if ( $role->id_role == 1 && $module->id == 1) {
 					$_check_val= 'disabled checked';
 				} else {
-					$cek = $this->db->get_where('user_access', ['id_role' => $role->id_role, 'id_menu' => $menu->id_menu])->row();
+					$cek = $this->db->get_where('acl_module_permissions', ['role_id' => $role->id_role, 'module_id' => $module->id])->row();
 					$_check_val= ( $cek ) ? 'checked' : '';
 				}
-				$tmp[$role->id_role][$menu->id_menu] = $_check_val;
+				$tmp[$role->id_role][$module->id] = $_check_val;
 			}
 		}
 
 		$data = [
 			'title' => 'Access Page',
 			'roles' => $roles,
-			'menus' => $menus,
+			'modules' => $modules,
 			'permission' => $tmp
 		];
 		$this->load->view('_layout/general/head', $data);
 		$this->load->view('core/js', $data);
 		$this->load->view('index', $data);
 	}
+
 	public function aksi()
 	{
 		$data = $this->model->aksi();

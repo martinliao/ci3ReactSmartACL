@@ -23,18 +23,18 @@
 							<thead>
 								<tr>
 									<th>Role</th>
-									<?php foreach ($menus as $menu) : ?>
-										<th width="20%"><?= $menu->title ?></th>
+									<?php foreach ($roles as $role) : ?>
+										<th width="20%"><?= $role->role_name ?></th>
 									<?php endforeach; ?>
 								</tr>
 							</thead>
 							<tbody id="data">
-								<?php foreach ($roles as $role) : ?>
+								<?php foreach ($modules as $module) : ?>
 									<tr>
-										<th><?= $role->role ?></th>
-										<?php foreach ($menus as $menu) : ?>
+										<th><?= $module->name ?></th>
+										<?php foreach ($roles as $role) : ?>
 											<td>
-												<input type="checkbox" class="cek" data-id_role="<?= $role->id_role ?>" data-id_menu="<?= $menu->id_menu ?>" <?= $permission[$role->id_role][$menu->id_menu];?>>
+												<input type="checkbox" class="cek" data-id_role="<?= $role->id_role ?>" data-id_menu="<?= $module->id ?>" <?= $permission[$role->id_role][$module->id];?>>
 											</td>
 										<?php endforeach; ?>
 									</tr>
