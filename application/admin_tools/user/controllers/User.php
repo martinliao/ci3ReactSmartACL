@@ -88,7 +88,6 @@ class User extends AdminController
 
 	public function aksi()
 	{
-debugBreak();
 		if ($_POST['aksi'] == 'tambah') {
 			$data = $this->model->tambah();
 			echo json_encode($data);

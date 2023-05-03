@@ -96,7 +96,6 @@ class User_model extends CI_Model
         $user = htmlspecialchars($_POST['user']);
         $id_role = htmlspecialchars($_POST['role']);
         $pass = htmlspecialchars($_POST['pass']);
-debugBreak();
         $cek = $this->db->get_where('admins', ['username' => $user])->row();
         if ($cek) {
             $hasil['status'] = false;
