@@ -237,8 +237,10 @@ $config['session_user_fields'] = [
  | Drivers: apc, file, memcached, wincache, redis
 */
 $config['cache_settings'] = [
-    'status' => FALSE, // TRUE,FALSE enable/disable cache
+    'status' => TRUE, // TRUE,FALSE enable/disable cache
     'time' => 300, //Time To Live, in seconds. 300 = 5 min
-    'driver' => 'memcached', //primary driver
+    'driver' => 'redis', //'memcached', //primary driver
     'driver_fallback' => 'file', //fall back driver
-];$config['cache_settings']['driver'] = 'redis';
+];
+//$config['cache_settings']['status'] = TRUE;
+//$config['cache_settings']['driver'] = 'redis';

@@ -102,7 +102,7 @@ class Migration_Menu_Preferences extends CI_Migration
         $this->db->insert($this->settings['user_submenu'],['id_submenu' => 1, 'id_menu' => 1, 'title' => 'User Management', 'icon' => 'fa fa-fw fa-users',  'url' => 'user', 'is_active' => 1, 'no_urut' => 2]);
         $this->db->insert($this->settings['user_submenu'],['id_submenu' => 2, 'id_menu' => 1, 'title' => 'Role management', 'icon' => 'fa fa-fw fa-cogs',   'url' => 'role', 'is_active' => 1, 'no_urut' => 1]);
         $this->db->insert($this->settings['user_submenu'],['id_submenu' => 3, 'id_menu' => 1, 'title' => 'Menu Management', 'icon' => 'fa fa-fw fa-code',   'url' => 'menu', 'is_active' => 1, 'no_urut' => 3]);
-        $this->db->insert($this->settings['user_submenu'],['id_submenu' => 6, 'id_menu' => 1, 'title' => 'Access Management', 'icon' => 'fa fa-fw fa-lock', 'url' => 'access', 'is_active' => 1, 'no_urut' => 4]);
+        $this->db->insert($this->settings['user_submenu'],['id_submenu' => 6, 'id_menu' => 1, 'title' => 'Permission Management', 'icon' => 'fa fa-fw fa-lock', 'url' => 'permission', 'is_active' => 1, 'no_urut' => 4]);
         $this->db->insert($this->settings['user_submenu'],['id_submenu' => 12, 'id_menu' => 6, 'title' => 'Dashboard', 'icon' => 'fa fa-fw fa-tachometer',  'url' => 'admin/dashboard', 'is_active' => 1, 'no_urut' => 1]);
         $this->db->insert($this->settings['user_submenu'],['id_submenu' => 38, 'id_menu' => 9, 'title' => 'Site Setting', 'icon' => 'fa fa-fw fa-map',      'url' => 'settings', 'is_active' => 1, 'no_urut' => 1]);
         $this->db->insert($this->settings['user_submenu'],['id_submenu' => 42, 'id_menu' => 10, 'title' => 'Data Divisi', 'icon' => 'fa fa-folder',         'url' => 'divisi', 'is_active' => 1, 'no_urut' => 2]);
