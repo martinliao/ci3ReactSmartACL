@@ -10,7 +10,7 @@ class Role extends AdminController
 		$this->logged_in();
         // $this->smarty_acl->authorized(); // Even do authorize check. 
         //$this->smarty_acl->module_authorized('roles'); //  在 SmartACL 是 roles
-//debugBreak();
+
 		$this->smarty_acl->authorized('roles'); // Even do authorize check. 最新的檢查
 		$this->load->model('role_model', 'model');
 	}

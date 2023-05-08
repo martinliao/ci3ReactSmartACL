@@ -35,7 +35,7 @@ class Cli extends MX_Controller
         //if (is_cli())
 		//{
 			//$this->load->driver('cache', array('adapter' => 'redis','backup' => 'file'));
-			//debugBreak();
+
             //if($this->cache->redis->is_supported()) {
 			if ($this->cache_settings['status'] === TRUE) {
                 $this->cache->clean();

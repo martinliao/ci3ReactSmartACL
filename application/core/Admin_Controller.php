@@ -50,7 +50,7 @@ class AdminController extends MY_Controller
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->library('form_validation');
-#debugBreak();
+
         #$_admins = $this->smarty_acl->admins(false);
         #$this->role_id = $_admins[0]['role_id'];
         //Example data
