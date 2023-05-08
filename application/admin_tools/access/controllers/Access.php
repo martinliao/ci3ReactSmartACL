@@ -10,7 +10,8 @@ class Access extends AdminController
 		parent::__construct();
 		$this->logged_in();
         // $this->smarty_acl->authorized(); // Even do authorize check. 
-        $this->smarty_acl->module_authorized('roles'); //  在 SmartACL 是 roles (roles是管理 role 及 Permission)
+        //$this->smarty_acl->module_authorized('roles'); //  在 SmartACL 是 roles (roles是管理 role 及 Permission)
+		$this->smarty_acl->authorized('roles'); // Even do authorize check. 最新的檢查
 		$this->load->model('access_model', 'model');
 	}
 

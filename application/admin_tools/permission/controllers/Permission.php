@@ -13,7 +13,9 @@ class Permission extends AdminController
 		parent::__construct();
 		$this->logged_in();
         // $this->smarty_acl->authorized(); // Even do authorize check.
-        $this->smarty_acl->module_authorized('roles'); //  在 SmartACL 是 roles (roles是管理 role 及 Permission)
+        //$tmp = $this->smarty_acl->module_authorized('roles'); //  在 SmartACL 是 roles (roles是管理 role 及 Permission)
+		$this->smarty_acl->authorized('Permission'); // Even do authorize check. 最新的檢查
+
 		$this->load->model('smarty_acl_model', 'smartyacl_model');
 		$this->load->model('permission_model');
 		$this->mods = $this->smartyacl_model->modules(TRUE);

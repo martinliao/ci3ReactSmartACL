@@ -543,14 +543,14 @@ class Smarty_acl
      * Use on constructor of Controllers, or default method
      * @return bool|void
      */
-    public function authorized()
+    public function authorized($module = NULL)
     {
         //Check if super admin
         if($this->CI->session->userdata($this->sess_names['admin'])['role_id'] == 1){
             return TRUE;
         }
         //Get module
-        $module = $this->CI->uri->segment(2);
+        $module = isset($module) ? $module : $this->CI->uri->segment(2);
         //Authorized if user is on admin/ route
         if(!$module){
             return TRUE;

@@ -9,7 +9,8 @@ class Medsos extends AdminController
 		parent::__construct();
 		$this->logged_in();
         // $this->smarty_acl->authorized(); // Even do authorize check. 
-        $this->smarty_acl->module_authorized('menu'); // 為了要檢查, 在 SmartACL 增加了 menu (module)
+        //$this->smarty_acl->module_authorized('menu'); // 為了要檢查, 在 SmartACL 增加了 menu (module)
+		$this->smarty_acl->authorized('menu'); // Even do authorize check. 最新的檢查
 		$this->load->model('medsos_model', 'model');
 	}
 	public function index()

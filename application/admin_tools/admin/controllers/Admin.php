@@ -9,7 +9,8 @@ class Admin extends AdminController
         parent::__construct();
         $this->logged_in();
         // $this->smarty_acl->authorized(); // Even do authorize check. 
-        $this->smarty_acl->module_authorized('admins'); // 在 SmartACL 是 admins(reactadmin是dashboard)
+        //$this->smarty_acl->module_authorized('admins'); // 在 SmartACL 是 admins(reactadmin是dashboard)
+        $this->smarty_acl->authorized('admin'); // Even do authorize check. 最新的檢查
         $this->load->model('admin_model', 'model');
     }
 
@@ -37,5 +38,10 @@ class Admin extends AdminController
         $role_id = $_admins[0]['role_id'];
         $data = $this->model->menu($role_id);
         echo json_encode($data);
+    }
+    public function logout()
+    {
+        $this->smarty_acl->logout();
+        return redirect('Admins/login');
     }
 }

@@ -33,11 +33,12 @@ class Migration_Create_Demo extends CI_Migration
         $this->get_settings();       
         /**************** Start Insert Data ****************/
         //Demo modules
-        $this->db->insert($this->settings['modules'],['name' => 'Dashboard', 'controller' => 'admin', 'permissions' => '["index", "edit", "delete", "create"]']);
+        $this->db->insert($this->settings['modules'],['name' => 'Dashboard', 'controller' => 'admin', 'permissions' => '["index", "edit"]']);
         $this->db->insert($this->settings['modules'],['name' => 'Manage Managers', 'controller' => 'managers', 'permissions' => '["index", "edit", "delete", "create"]']);
         $this->db->insert($this->settings['modules'],['name' => 'Manage Modules', 'controller' => 'modules', 'permissions' => '["index", "edit", "delete", "create"]']);
         $this->db->insert($this->settings['modules'],['name' => 'Manage Roles', 'controller' => 'roles', 'permissions' => '["index", "edit", "delete", "create"]']);
         $this->db->insert($this->settings['modules'],['name' => 'Manage Users', 'controller' => 'users', 'permissions' => '["index", "edit", "delete", "create"]']);
+        $this->db->insert($this->settings['modules'],['name' => 'Manage Access', 'controller' => 'permission', 'permissions' => '["index", "edit", "delete", "create"]']);
         /**************** End Insert Data ****************/
     }
 
