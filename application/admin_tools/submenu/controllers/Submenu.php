@@ -8,18 +8,7 @@ class Submenu extends AdminController
 	public function __construct()
 	{
 		parent::__construct();
-		//$_admins = $this->smarty_acl->admins(false);
-        //$role_id = $_admins[0]['role_id'];
-
-		$this->db->select('*');
-		$this->db->from('user_access');
-		$this->db->join('user_submenu', 'user_access.id_menu=user_submenu.id_menu', 'inner');
-		$this->db->where('user_access.id_role', $this->role_id);
-		$this->db->where('user_submenu.url', 'menu');
-		$access = $this->db->get()->row();
-		if (!$access) {
-			redirect('page');
-		}
+		$this->smarty_acl->authorized('modules'); // Even do authorize check. 最新的檢查
 		$this->load->model('submenu_model', 'model');
 	}
 
@@ -31,7 +20,7 @@ class Submenu extends AdminController
 			'title' =>	$cek->title,
 			'id' => $id
 		];
-		$this->load->view('_layout/admin/head', $data);
+		$this->load->view('_layout/general/head', $data);
 		$this->load->view('core/js', $data);
 		$this->load->view('core/modals', $data);
 		$this->load->view('index', $data);
