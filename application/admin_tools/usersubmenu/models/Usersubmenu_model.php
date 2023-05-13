@@ -16,35 +16,38 @@ class UserSubmenu_model extends CI_Model
         $this->order = array('sort_order' => 'asc');
     }
 
-    public function getRows($postData, $id)
+    public function getRows($postData, $parentId)
     {
-        $this->_get_datatables_query($postData);
+        $this->_get_datatables_query($postData, $parentId) ;
         if ($postData['length'] != -1) {
             $this->db->limit($postData['length'], $postData['start']);
         }
-        $this->db->where('parent_id', $id);
+        $this->db->where('parent_id', $parentId);
         $query = $this->db->get();
         return $query->result();
     }
 
-    public function countAll()
+    public function countAll($parentId)
     {
-        $this->db->from($this->table);
+        $this->db->from($this->table)
+            ->group_start()
+                    ->where('parent_id', $parentId)
+                    ->where('action_id', 0)
+            ->group_end();
         return $this->db->count_all_results();
     }
 
-    public function countFiltered($postData)
+    public function countFiltered($postData, $parentId)
     {
-        $this->_get_datatables_query($postData);
+        $this->_get_datatables_query($postData, $parentId);
         $query = $this->db->get();
         return $query->num_rows();
     }
-    private function _get_datatables_query($postData)
+    private function _get_datatables_query($postData, $parentId)
     {
         $this->db->from($this->table);
-        $where = "parent_id > 0";
+        $where = "parent_id = $parentId and action_id=0";
         $this->db->where($where);
-debugBreak();
         $i = 0;
         foreach ($this->column_search as $item) {
             if ($postData['search']['value']) {
@@ -162,5 +165,9 @@ debugBreak();
             return true;
         }
         return false;
+    }
+
+    public function getParentMenu($parentId) {
+        return $this->db->get_where($this->table, ['id' => $parentId])->row();
     }
 }

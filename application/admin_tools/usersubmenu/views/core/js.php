@@ -18,7 +18,7 @@
   $(document).ready(function() {
     function show_data() {
       $.ajax({
-        url: '<?= site_url('admin/menu') ?>',
+        url: '<?= site_url('admin/usermenu') ?>',
         type: 'post',
         dataType: 'json',
         success: function(data) {
@@ -179,7 +179,7 @@
       });
 
     $('#kembali').click(function() {
-      $('#show_data').load('<?= site_url('menu') ?>');
+      $('#show_data').load('<?= site_url('usermenu') ?>');
     });
     $('#reload').click(function() {
       $('#show_data').load('<?= site_url('usersubmenu/index/') ?>' + id_menu);
