@@ -13,13 +13,19 @@
             <div class="col-md-12">
                 <div class="card card-primary card-outline">
                     <div class="card-header">
-                        <h3 class="card-title">
-                            <i class="fas fa-edit"></i>
-                            User Management
-                        </h3>
-                        <br>
-                        <hr>
-                        <button type="button" class="btn btn-success btn-sm" id="tambah"><i class="fas fa-plus"></i> Tambah</button>
+                        <div class="container-fluid">
+                            <div class="row mb-2">
+                                <div class="col-sm-6">
+                                    <h3 class="card-title">
+                                        <i class="fas fa-edit"></i>
+                                        User Management
+                                    </h3>
+                                </div><!-- /.col -->
+                                <div class="col-sm-6 text-right">
+                                    <button type="button" class="btn btn-success btn-sm" id="tambah"><i class="fas fa-plus"></i> Tambah</button>
+                                </div><!-- /.col -->
+                            </div><!-- /.row -->
+                        </div><!-- /.container-fluid -->
                     </div>
                     <div class="card-body pad table-responsive">
                         <table class="table table-bordered table-sm dt-responsive nowrap" id="myData" width="100%">
